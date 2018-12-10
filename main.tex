@@ -1,0 +1,144 @@
+\documentclass[12pt]{article}
+\usepackage{amsmath}
+\usepackage{graphicx}
+\usepackage{hyperref}
+\usepackage{pgfgantt}
+\usepackage{rotating}
+\usepackage{mathtools}
+\usepackage{dirtytalk}
+\usepackage[utf8]{inputenc}
+\usepackage[backend=biber, style=authoryear, sorting=nty]{biblatex}
+\renewcommand*{\nameyeardelim}{\addcomma\space}
+\addbibresource{bibliography.bib}
+\graphicspath{{images/}}
+
+\title{%
+  Building a programming language without the dependency on English \\
+  \large CMP6102 Individual Project:
+    Literature Review }
+
+\author{Pandelis Zembashis | S15101590 \\
+Supervisor: Emmmett Cooper}
+
+\date{December 2018}
+
+\begin{document}
+\maketitle
+
+\clearpage
+
+
+\section{Area Of Research}
+
+The fundamental aim of this project is to build an accessible programming language. To do so we will need to explore
+the base principals of programming language theory. We will look into some of the existing research in place for what
+has been defined as good programming practice. This shall be followed by a review of a subset of languages from various
+decades and compare how they have evolved from each other and improved on the ideas of previous generations of languages.
+
+A second goal of the project is to make the language accessible to users who are not native english english speakers and
+have little to no programming experience. We will be taking a subjective look at the implementation of the languages and
+the symbols they use. We'll also take into account the country of origin of the main developers of the language to see if
+this has an effect on the symbols used. From this we may be able to deduce if there are indeed hints of linguistic culture
+within the design of languages which strengthens the case for a language which strives to be more generic in its choice
+of symbols.
+
+
+\section{If you See What I Mean}
+
+One of the earliest attempts at a programming language that attempted to make use of natural language
+to define more readable programs can be found in the design of ISWIM (If you See What I Mean). This
+language was first described in a 1966 edition the Association for Computing Machinery's journal
+titled "The Next 700 Programming Languages" \parencite{Landin:1966:NPL:365230.365257}.
+
+In this paper the author describes the mistakes make by languages of the time, such as ALGOL60.
+They describe programming languages as a means to express things in terms of other things as well as
+existing as defining a basic set of given things that can be used. The author attempts to outline a language
+that better defines the given things defined by the language by utilising linguistic structure.
+
+The author makes particular reference to mathematical communication in which he describes how
+naturally a \emph{where} clause reads.
+
+
+\begin{gather*}
+f(bA - 2c) + f(2b - c)\\
+\textbf{where}\; f(x) = x(x+a)\\
+\textbf{and}\; b = u/(u+l)\\
+\textbf{and}\; c = v/(v-t-1)
+\end{gather*}
+
+In the expression above it is very natural to follow the grammar of the equation and deduce what is
+happening. The where clause is naturally extended by adding \textbf{and}, which we can follow and logically
+determine that this is an addition to the previous statement.
+
+This is the type of grammatical reliance we must aim to avoid in the design of our language. We cannot
+assume the end user of the language will be familiar with these grammatical primitives.
+
+The design of ISWIM attempts to take this into consideration with multiple levels of abstraction in the
+design of the language itself. The abstraction we are most interested in is what the author characterises as
+logical ISWIM. This abstraction is defined as:
+
+\say{uncommitted to character sets and type faces, but committed as to the sequence
+of textual elements, and the grammatical rules for grouping them}
+
+This is in theory would allow ISWIM to be translated to a different language and grammar completely
+as long as the definition of ISWIM could be adapted to the end language's grammar. As it's definition is also
+character set agnostic, it would naturally make sense that we could build a unique series of characters
+which we assign meaning and grammar to in order to represent the language.
+
+\section{Naturalistic Programming}
+
+In \parencite{Lopes:2003:BAT:949344.949400} the authors outline a future beyond aspect-oriented
+programming (AOP), a method of improving system modularity by modularizing crosscutting concerns \parencite{murphy}.
+The authors propose that high level programming do not follow natural human communication patterns
+or the way that we think. The next breakthrough will be by taking aspects of natural language
+to make descriptions concise, effective and understandable.
+
+There is a wide breadth of naturalistic type languages in use by programmers which are outlined in the survey
+\parencite{Pulido-Prieto}. This is a fantastic survey of a wide array of high level
+languages that follow grammatical and natural english rules to provide programmers with what is
+ideally an easier understanding of code that is being written.
+
+One such language which is among the most used languages in the world with multiple
+dialects is Structured Query Language (SQL) \parencite{stackoverflow}. SQL is very expressive
+and can be read like a regular English sentence. Without much knowledge of SQL at all you can make
+deductions as to what the program will do by following its natural grammar rules.
+
+Take the following expression for example:
+
+\begin{verbatim}
+    SELECT id, name, age, grade
+    FROM students
+    WHERE grade > 90
+\end{verbatim}
+
+Reading the expression we can deduce that this is accessing data by selecting various properties
+\emph{from} some sort of students record \emph{where} the individuals grade is greater than 90.
+Very natural to follow and conforms to some of Landin's ideas mentioned previously \parencite{Landin:1966:NPL:365230.365257}.
+
+The programming language Pegasus is an example of the most complete naturalistic programming languages that
+have been designed \parencite{Knoll:2006:PFS:1176617.1176628}.
+
+The authors of this language highlight 4 major unsolved gaps in developer's expectations and programming techniques.
+
+\begin{enumerate}
+\item{Mental problem. An idea must be adapted to a programming language, decomposing orgrouping its elements.}
+
+\item{Programming language problem. An algorithm must be translated into several languages that use new technologies and concepts, meaning that old languages still have a strong presence.}
+
+\item{Natural language problem. In the modern era, while people from all around the worldwork in teams, they generally have a different native language and their own particular regionalisms.}
+
+\item{Technical problem. In system design, the developer’s contribution and time is in-vested by programmers thinking about how to best adapt ideas to produce an efficient implementation.}
+\end{enumerate}
+
+We should pay particular attention to point number 3. The natural language and culture problem. With teams spanning the globe and working in increasingly more diverse and integrated environments
+this problem becomes more prevalent. Even things as simple as color vs colour throw off developers every day when working with CSS, a markup that distinctly american.
+
+Pegasus actually tackles this problem head on and is able to generate programs in English and German languages.
+Using the definition of Pegasus proposed by the authors there has also been an extension to the language
+Ara Pegasus.
+
+\clearpage
+\printbibliography
+
+\end{document}
+~
